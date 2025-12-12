@@ -1,0 +1,64 @@
+name: Python AFK Bot Workflow
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Depoyu klonla
+        uses: actions/checkout@v3
+
+      - name: Python kur
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Bağımlılıkları yükle
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Botu çalıştır
+        run: |
+          python main.py
+name: Minecraft AFK Bot Workflow
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Depoyu klonla
+        uses: actions/checkout@v3
+
+      - name: Python kur
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Bağımlılıkları yükle
+        run: |
+          python -m pip install --upgrade pip
+          pip install mineflayer
+
+      - name: Botu çalıştır
+        run: |
+          python main.py
+          cd /path/to/Minecraft-AFK-bot   # projenin olduğu klasöre git
+git add .github/workflows/python.yml
+git commit -m "Add GitHub Actions workflow"
+git push origin main  
